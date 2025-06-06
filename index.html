@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>InSightAI - Intelligent Image Analysis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background"></div>
+
+  <div class="container">
+    <h1>InSightAI - Image Analysis</h1>
+
+    <div class="photo">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="InSightAI Logo" />
+      </div>      
+
+    <form>
+      <label>Upload Image:</label>
+      <input type="file" id="imageInput" accept="image/*" />
+
+      <div class="preview-box" id="previewBox">Image preview will appear here.</div>
+
+      <label>Analysis Result:</label>
+      <textarea placeholder="AI will display its result here..." rows="4"></textarea>
+
+      <label>Detected Elements:</label>
+      <ul class="result-list">
+        <li>Text: 92% match</li>
+        <li>Face: Not Detected</li>
+        <li>Shape: Circle & Rectangle</li>
+      </ul>
+
+      <label>AI Suggestions:</label>
+      <textarea placeholder="This section provides smart AI feedback...">Consider improving image clarity for better OCR.</textarea>
+
+      <button type="submit">Analyze Another Image</button>
+    </form>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const previewBox = document.getElementById('previewBox');
+
+    imageInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          previewBox.innerHTML = `<img src="${reader.result}" alt="Preview" class="preview-img" />`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
